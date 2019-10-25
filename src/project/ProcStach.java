@@ -16,6 +16,7 @@ public class ProcStach {
 
     private double q_i = -1;
 
+    private double Pt = -1;
     private double Pqt = -1;
 
     public ProcStach() {
@@ -123,6 +124,12 @@ public class ProcStach {
         return -1;
     }
 
+    public double Pt() {
+        if(type == Queue.QueueType.MMS && q0() != -1 && Pt != -1)
+            return Math.exp(-mu * Pt) * (1 + (((q0() * Math.pow(rho() * nbServer, 2)) / (factorial((int) nbServer) * 1 - rho()))) * ((1 - (Math.exp(-mu * Pt) * (nbServer-1-(rho() * nbServer))))) / (nbServer - 1 - (rho() * nbServer)));
+        return -1;
+    }
+
     public double Ptq0() {
         if(type == Queue.QueueType.MMS && q0() != -1)
             return (q0() * Math.pow(rho() * nbServer, nbServer))/(factorial((int)nbServer) * (1 - rho()));
@@ -130,7 +137,7 @@ public class ProcStach {
     }
 
     public double Ptqt() {
-        if(type == Queue.QueueType.MMS && Ptq0() != -1)
+        if(type == Queue.QueueType.MMS && Ptq0() != -1 && Pqt != -1)
             return Math.exp(-rho() * mu * Pqt * (1 - rho())) * Ptq0();
         return -1;
     }
@@ -207,5 +214,13 @@ public class ProcStach {
 
     public void setPqt(double pqt) {
         Pqt = pqt;
+    }
+
+    public double getPt() {
+        return Pt;
+    }
+
+    public void setPt(double pt) {
+        Pt = pt;
     }
 }

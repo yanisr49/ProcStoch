@@ -40,6 +40,18 @@ public class Queue {
     private JLabel PqtJLabel;
     private JTextField PqtJTextField;
     private JLabel Pqt0JLabel;
+    private JTextField PtJTextField;
+    private JLabel PtJLabel;
+    private JLabel descriptionW;
+    private JLabel descriptionWq;
+    private JLabel descriptionPt;
+    private JLabel descriptionPq0;
+    private JLabel descriptionPqt;
+    private JLabel nameW;
+    private JLabel nameWq;
+    private JLabel namePt;
+    private JLabel namePqt0;
+    private JLabel namePqtt;
     private JPanel mm1kJPanel;
     private JPanel mmsJPanel;
 
@@ -110,6 +122,18 @@ public class Queue {
                 setResults();
             }
         });
+        PtJTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                try {
+                    procStach.setPt(Double.valueOf(PtJTextField.getText()));
+                } catch (NumberFormatException ee) {
+                    System.out.println(ee);
+                }
+                setResults();
+            }
+        });
         PqtJTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -158,6 +182,18 @@ public class Queue {
                 Pqt0JLabel.setVisible(false);
                 PqtJLabel.setVisible(false);
                 PqtJTextField.setVisible(false);
+                PtJLabel.setVisible(false);
+                PtJTextField.setVisible(false);
+                descriptionW.setVisible(true);
+                descriptionWq.setVisible(true);
+                descriptionPt.setVisible(false);
+                descriptionPq0.setVisible(false);
+                descriptionPqt.setVisible(false);
+                nameW.setVisible(true);
+                nameWq.setVisible(true);
+                namePt.setVisible(false);
+                namePqt0.setVisible(false);
+                namePqtt.setVisible(false);
                 break;
             case MMS:
                 mm1JPanel.setVisible(true);
@@ -170,6 +206,18 @@ public class Queue {
                 Pqt0JLabel.setVisible(true);
                 PqtJLabel.setVisible(true);
                 PqtJTextField.setVisible(true);
+                PtJLabel.setVisible(true);
+                PtJTextField.setVisible(true);
+                descriptionW.setVisible(true);
+                descriptionWq.setVisible(true);
+                descriptionPt.setVisible(true);
+                descriptionPq0.setVisible(true);
+                descriptionPqt.setVisible(true);
+                nameW.setVisible(true);
+                nameWq.setVisible(true);
+                namePt.setVisible(true);
+                namePqt0.setVisible(true);
+                namePqtt.setVisible(true);
                 break;
             case MM1K:
                 mm1JPanel.setVisible(true);
@@ -182,6 +230,18 @@ public class Queue {
                 Pqt0JLabel.setVisible(false);
                 PqtJLabel.setVisible(false);
                 PqtJTextField.setVisible(false);
+                PtJLabel.setVisible(false);
+                PtJTextField.setVisible(false);
+                descriptionW.setVisible(false);
+                descriptionWq.setVisible(false);
+                descriptionPt.setVisible(false);
+                descriptionPq0.setVisible(false);
+                descriptionPqt.setVisible(false);
+                nameW.setVisible(false);
+                nameWq.setVisible(false);
+                namePt.setVisible(false);
+                namePqt0.setVisible(false);
+                namePqtt.setVisible(false);
                 break;
         }
 
@@ -230,83 +290,91 @@ public class Queue {
 
         try {
             if(procStach.rho() != -1 && !(procStach.rho() != procStach.rho()))
-                rhoJLabel.setText("ρ : " + String.valueOf(procStach.rho()));
+                rhoJLabel.setText(String.valueOf(procStach.rho()));
             else
-                rhoJLabel.setText("ρ : Error");
+                rhoJLabel.setText("Error");
         } catch (Error e) {
-            rhoJLabel.setText("ρ : Error");
+            rhoJLabel.setText("Error");
         }
         try {
             if(procStach.q0() != -1 && !(procStach.q0() != procStach.q0()))
-                q0JLabel.setText("q_(0) : " + String.valueOf(procStach.q0()));
+                q0JLabel.setText(String.valueOf(procStach.q0()));
             else
-                q0JLabel.setText("q_(0) : Error");
+                q0JLabel.setText("Error");
         } catch (Error e) {
-            q0JLabel.setText("q_(0) : Error");
+            q0JLabel.setText("Error");
         }
         try {
             if(procStach.qi() != -1 && !(procStach.qi() != procStach.qi()))
-                qiJLabel.setText("q_(" + procStach.getQ_i() + ") : " + String.valueOf(procStach.qi()));
+                qiJLabel.setText(String.valueOf(procStach.qi()));
             else
-                qiJLabel.setText("q_(\" + procStach.getQ_i() + \") : Error");
+                qiJLabel.setText("Error");
         } catch (Error e) {
-            qiJLabel.setText("q_(\" + procStach.getQ_i() + \") : Error");
+            qiJLabel.setText("Error");
         }
         try {
             if(procStach.L() != -1 && !(procStach.L() != procStach.L()))
-                lJLabel.setText("L : " + String.valueOf(procStach.L()));
+                lJLabel.setText(String.valueOf(procStach.L()));
             else
-                lJLabel.setText("L : Error");
+                lJLabel.setText("Error");
         } catch (Error e) {
-            lJLabel.setText("L : Error");
+            lJLabel.setText("Error");
         }
         try {
             if(procStach.Lq() != -1 && !(procStach.Lq() != procStach.Lq()))
-                lqJLabel.setText("L_q : " + String.valueOf(procStach.Lq()));
+                lqJLabel.setText(String.valueOf(procStach.Lq()));
             else
-                lqJLabel.setText("L_q : Error");
+                lqJLabel.setText("Error");
         } catch (Error e) {
-            lqJLabel.setText("L_q : Error");
+            lqJLabel.setText("Error");
         }
         try {
             if(procStach.W() != -1 && !(procStach.W() != procStach.W()))
-                wJLabel.setText("W : " + String.valueOf(procStach.W()));
+                wJLabel.setText(String.valueOf(procStach.W()));
             else
-                wJLabel.setText("W : Error");
+                wJLabel.setText("Error");
         } catch (Error e) {
-            wJLabel.setText("W : Error");
+            wJLabel.setText("Error");
         }
         try {
             if(procStach.Wq() != -1 && !(procStach.Wq() != procStach.Wq()))
-                wqJLabel.setText("W_q : " + String.valueOf(procStach.Wq()));
+                wqJLabel.setText(String.valueOf(procStach.Wq()));
             else
-                wqJLabel.setText("W_q : Error");
+                wqJLabel.setText("Error");
         } catch (Error e) {
-            wqJLabel.setText("W_q : Error");
+            wqJLabel.setText("Error");
         }
         try {
             if(procStach.Ptq0() != -1 && !(procStach.Ptq0() != procStach.Ptq0()))
-                PqtJLabel.setText("P(Tq > 0) : " + String.valueOf(procStach.Ptq0()));
+                PqtJLabel.setText(String.valueOf(procStach.Ptq0()));
             else
-                PqtJLabel.setText("P(Tq > 0) : Error");
+                PqtJLabel.setText("Error");
         } catch (Error e) {
-            PqtJLabel.setText("P(Tq > 0) : Error");
+            PqtJLabel.setText("Error");
+        }
+        try {
+            if(procStach.Pt() != -1 && !(procStach.Pt() != procStach.Pt()))
+                PtJLabel.setText(String.valueOf(procStach.Pt()));
+            else
+                PtJLabel.setText("Error");
+        } catch (Error e) {
+            PtJLabel.setText("Error");
         }
         try {
             if(procStach.Ptq0() != -1 && !(procStach.Ptq0() != procStach.Ptq0()))
-                Pqt0JLabel.setText("P(Tq > 0) : " + String.valueOf(procStach.Ptq0()));
+                Pqt0JLabel.setText(String.valueOf(procStach.Ptq0()));
             else
-                Pqt0JLabel.setText("P(Tq > 0) : Error");
+                Pqt0JLabel.setText("Error");
         } catch (Error e) {
-            Pqt0JLabel.setText("P(Tq > 0) : Error");
+            Pqt0JLabel.setText("Error");
         }
         try {
             if(procStach.Ptqt() != -1 && !(procStach.Ptqt() != procStach.Ptqt()))
-                PqtJLabel.setText("P(Tq > " + procStach.getPqt() + ") : " + String.valueOf(procStach.Ptqt()));
+                PqtJLabel.setText(String.valueOf(procStach.Ptqt()));
             else
-                PqtJLabel.setText("P(Tq > " + procStach.getPqt() + ") : Error");
+                PqtJLabel.setText("Error");
         } catch (Error e) {
-            PqtJLabel.setText("P(Tq > " + procStach.getPqt() + ") : Error");
+            PqtJLabel.setText("Error");
         }
 
         App.refreshJFrame();
